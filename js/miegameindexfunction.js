@@ -179,7 +179,7 @@ function miegame_action(cx, cy) {
 function miegame_win(){
     console.log("win");
     wait_loding();
-    let post = { ask: "level",main: "level",playerCode: window.gameJson.playerCode,id: ++window.level };
+    let post = { ask: "nextgame",main: "level",playerCode: window.gameJson.playerCode,id: ++window.level };
     SERVO(post);
 }
 

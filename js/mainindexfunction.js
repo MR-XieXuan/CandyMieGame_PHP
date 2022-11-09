@@ -58,7 +58,7 @@ function get_a_ranking(a) {
     for (let i = 1; i < window.districk.length; i++) {
         starNum[i - 1] = districk[i]["starnum"];
     }
-    starNum.sort();
+    starNum.sort(function(a,b){return b-a});
     for (let i = 0; i < starNum.length; i++) {
         if (districk[a]["starnum"] == starNum[i])
             return i + 1;

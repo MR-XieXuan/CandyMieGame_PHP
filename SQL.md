@@ -1,6 +1,6 @@
 -------------------------------
 # miegame
-
+```markdown
 miegame
 | ---- ---- ---- ---- level (默认地图)
 | ---- ---- id (第几关)
@@ -17,7 +17,7 @@ miegame
 | ---- ---- level (已过关的数量)
 | ---- ---- creatTime (创建游戏的时间)
 | ---- ---- updataTime (更新的时间)
-
+```
 ```sql
 INSERT INTO `star` (`id`, `name`, `starnum`) VALUES (1, '北京市', '0');
 INSERT INTO `star` (`id`, `name`, `starnum`) VALUES (2, '北京市', '0');

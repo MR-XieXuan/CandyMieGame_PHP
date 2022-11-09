@@ -55,9 +55,46 @@ else if ($_POST['ask'] == "main") {
 // 如果是新游戏请求
 else if ($_POST['ask'] == "newgame") {
     new_game();
+} else if( $_POST['ask'] == "nextgame" ){
+    if( $_POST['playerCode'] ){
+        nextgame($_POST['playerCode']);
+    }
+    
+} else if( $_POST['ask'] == "district" ){
+    $star = get_star();
+    echo $star;
 }
 
 
+function nextgame( $playerCode ){
+    // 引入数据库信息
+    global $servername, $sqlname, $sqlpassword, $sqldatabase;
+    
+    $mysql = new mysqli($servername, $sqlname, $sqlpassword);
+    $mysql->set_charset('utf8');
+    if (!SQL\usebase($mysql, $sqldatabase) == true) {
+        die();
+        $mysql->close();
+    }
+    // 添加一颗星星
+    $star = get_star();
+    $star = json_decode($star,true);
+    $yon = SQL\selectsql($mysql, "`star`", "starnum", "id", "".$star[0]['id']."");
+    $nextStar = mysqli_fetch_array($yon)[0] + 1;
+    $yon = $mysql->query("UPDATE `star` SET `starnum`=". $nextStar . " WHERE `id` =".$star[0]['id']."");
+    // 获取 下一关
+    $yon = SQL\selectsql($mysql, "`playerCode`", "level", "playerCode", "\"".$playerCode."\"");
+    $next = mysqli_fetch_array($yon)[0] + 1;
+    $map = get_map("level", $next + 1 );
+    if ( !$map["address"] ){
+        echo '';
+        die();
+    }
+    $mapJson = file_get_contents($map["address"]);
+    $yon = $mysql->query("UPDATE `playercode` SET `level`=". $next . " WHERE `playerCode` = \"".$playerCode."\"");
+    $mapJson = replay_map($mapJson, $playerCode);
+    echo $mapJson;
+}
 function new_game()
 {
     // 新游戏
