@@ -1,5 +1,5 @@
 # CandyMieGame_PHP
-一个用PHP做后端，js做控制器，H5做视图的卡牌堆叠小游戏
+一个用PHP做后端，js做控制器，H5做视图的卡牌堆叠小游戏。适用与竖屏手机！
 
 # 开始运行(装载到服务器)
 
@@ -19,6 +19,7 @@ INSERT INTO `level` (`id`, `address`, `level`, `trytasnum`, `tasnum`) VALUES ([�
 ```
 
 #  联系作者
+
 有任何问题都可以联系作者：
 <br/>
 <center>
@@ -32,5 +33,3 @@ GitHub: <a  href = "https://github.com/MR-XieXuan">[ https://github.com/MR-XieXu
 </center>
 <br/>
 <br/>
-&emsp;如果本代码对您有帮助的话，可以给本代码一个Star或者是Fork本代码。你的每一个fstar可以给作者非常大的鼓励。
-&emsp;如果遇到困难，欢迎联系作者，你可以私聊作者或者添加作者QQ、发送电子邮件向作者寻求帮助。也可以在Issue向大家提问。
